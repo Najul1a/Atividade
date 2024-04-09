@@ -256,15 +256,15 @@ const exercicio16 = () => {
   let num1 = document.getElementById("num1").value;
   let result = document.getElementById("resultado");
   let error = document.getElementById("erro");
-  let pi = 3.14
-  let area = pi * num1 ** 2
+  let pi = 3.14;
+  let area = pi * num1 ** 2;
 
   if (num1 <= 0) {
     result.innerHTML = "";
-    error.innerText = "Favor informar um número positivo!"
+    error.innerText = "Favor informar um número positivo!";
   } else {
-   error.innerText = "";
-   result.innerText = `A área do circulo é ${area}`
+    error.innerText = "";
+    result.innerText = `A área do circulo é ${area}`;
   }
 };
 
@@ -285,19 +285,161 @@ const exercicio17 = () => {
 };
 
 //-----------------------------------------------------------------------------------------------------
-const exercicio18 = ()=> {
+const exercicio18 = () => {
   let num1 = document.getElementById("num1").value * 1;
   let num2 = document.getElementById("num2").value * 1;
   let num3 = document.getElementById("num3").value * 1;
   let error = document.getElementById("erro");
   let result = document.getElementById("resultado");
-  let area = (num1 + num2)* num3 / 2;
+  let area = ((num1 + num2) * num3) / 2;
 
   if (num1 <= 0 || num2 <= 0 || num3 <= 0) {
-    error.innerText = "Favor informar um número positivo!"
+    error.innerText = "Favor informar um número positivo!";
     result.innerHTML = "";
-  }else{
+  } else {
     error.innerText = "";
-    result.innerText = `A área do trapézio é ${area}`
+    result.innerText = `A área do trapézio é ${area}`;
   }
-}
+};
+
+const exercicio19 = () => {
+  let dataI = document.getElementById("data").value;
+  let atual = new Date();
+  let result = document.getElementById("resultado");
+  let error = document.getElementById("erro");
+  result.innerText = "";
+  error.innerText = "";
+
+  if (dataI == "") {
+    error.innerText = " informar data!";
+  } else {
+    error.innerText = "";
+    dataI = new Date(dataI);
+
+    let diferenca = atual.getTime() - dataI.getTime();
+
+    let idade = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365.25));
+    result.innerText += `${idade} `;
+  }
+};
+
+const exercicio20 = () => {
+  let error = document.getElementById("erro");
+  let result = document.getElementById("resultado");
+  let frase = document.getElementById("frase").value;
+  let inversa = "";
+
+  if (frase === "") {
+    error.innerText = "INSERIR FRASE";
+    result.innerText = "";
+  } else {
+    for (let i = frase.length - 1; i >= 0; i--) {
+      inversa += frase[i];
+    }
+    result.innerText = `${inversa}`;
+    error.innerText = "";
+  }
+};
+
+const exercicio21 = () => {
+  let result = document.getElementById("resultado");
+  let frase = document.getElementById("frase").value;
+  let error = document.getElementById("erro");
+
+  if (frase === "") {
+    error.innerText = "escrever a frase";
+    result.innerText = "";
+  } else {
+    function removEspaço(frase) {
+      let outrafrase = "";
+      for (let i = 0; i < frase.length; i++) {
+        if (frase[i] !== ` `) outrafrase += frase[i];
+      }
+      return outrafrase;
+    }
+    let frase1 = removEspaço(frase);
+    result.innerText = `${frase1}`;
+    error.innerText = "";
+  }
+};
+
+let soma = 0;
+const exercicio22 = () => {
+  let num = document.getElementById("num").value;
+  let result = document.getElementById("resultado");
+  let error = document.getElementById("erro");
+  error.innerText = "";
+  result.innerText = "";
+
+  if (soma <= 100) {
+    soma += parseInt(num);
+    result.innerText = ` A  soma dos numeros é ${soma}`;
+  } else {
+    result.innerText = "";
+    error.innerText = `A soma dos numeros que foi informado ja deu 100, recomeçe!!`;
+  }
+};
+const exercicio23 = () => {
+  let error = document.getElementById("erro");
+  let result = document.getElementById("resultado");
+  let frase = document.getElementById("frase").value;
+  let palavra = document.getElementById("palavra").value;
+  let cont = 0;
+
+  if (!isNaN(palavra) || !isNaN(frase)) {
+    error.innerText = "Não aceito numeros";
+    result.innerText = "";
+  } else {
+    frase = frase.toLowerCase();
+    palavra = palavra.toLowerCase();
+    let palavras = frase.split(" ");
+
+    for (var i = 0; i < palavras.length; i++) {
+      if (palavras[i] == palavra) {
+        cont++;
+      }
+    }
+    result.innerHTML = `A palavra ${palavra} aparecer ${cont} vezes na frase.`;
+    error.innerText;
+  }
+};
+
+const exercicio24 = () => {
+  let valor = document.getElementById("frase").value;
+  let frase = valor.split(" ");
+  let result = document.getElementById("resultado");
+  let error = document.getElementById("erro");
+  const letrasMaiuscula = [];
+  error.innerText = "";
+  result.innerText = "";
+
+  if (valor == "") {
+    error.innerText = "Informe uma frase!";
+  } else {
+    const mudarFrase = frase.map((palavra) => {
+      const primeiraletraMaiuscula = palavra[0].toUpperCase();
+      letrasMaiuscula.push(primeiraletraMaiuscula);
+      return primeiraletraMaiuscula + palavra.slice(1);
+    });
+    resultado.innerHTML = `${mudarFrase.join(" ")}`;
+  }
+};
+
+const exercicio25 = () => {
+  let num1 = document.getElementById("num1").value;
+  let num2 = document.getElementById("num2").value;
+  let num3 = document.getElementById("num3").value;
+  let result = document.getElementById("resposta");
+  let array = []
+  result.innerHTML = "";
+
+
+  array.push(num1);
+  array.push(num2);
+  array.push(num3);
+  array.sort((a, b) => a - b);
+  
+    for (let i = 0; i <= 2; i++) {
+      result.innerText += `${array[i]} ,`;
+    }
+  };
